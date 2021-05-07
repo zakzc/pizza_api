@@ -1,0 +1,63 @@
+[
+  {
+    // "id": 1,
+    "name": "Mozzarela",
+    "price": "30",
+    "ingredients": ["dough", "tomato sauce", "mozzarella"]
+  },
+  {
+    // "id": 2,
+    "name": "Margherita",
+    "price": "30",
+    "ingredients": [
+      "dough",
+      "tomato sauce",
+      "mozzarella",
+      "basilic",
+      "fresh tomato"
+    ]
+  },
+  {
+    // "id": 3,
+    "name": "Four cheese",
+    "price": "30",
+    "ingredients": [
+      "dough",
+      "tomato",
+      "mozzarella",
+      "ricotta",
+      "gorgonzola",
+      "parmesan"
+    ]
+  },
+  {
+    // "id": 4,
+    "name": "Pepperoni",
+    "price": "30",
+    "ingredients": ["dough", "tomato", "mozzarella", "pepperoni"]
+  },
+  {
+    // "id": 5,
+    "name": "Chicken Barbecue",
+    "price": "30",
+    "ingredients": [
+      "dough",
+      "tomato",
+      "mozzarella",
+      "barbecue sauce",
+      "chicken"
+    ]
+  },
+  {
+    // "id": 6,
+    "name": "Cappriciosa",
+    "price": "30",
+    "ingredients": ["dough", "tomato", "mozzarella", "artichoke", "mushrooms"]
+  },
+  {
+    // "id": 7,
+    "name": "Ham and Mushroom",
+    "price": "30",
+    "ingredients": ["dough", "tomato", "mozzarella", "cooked ham", "mushrooms"]
+  }
+]
