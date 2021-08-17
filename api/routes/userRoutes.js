@@ -10,7 +10,7 @@ const userControls = require("../controls/userControls");
 const logger = require("../utils/logger");
 ///
 if (process.env.NODE_ENV === "development") {
-  logger.info("User routes connected");
+  console.log("User routes connected");
   router.use(morgan("tiny"));
 }
 

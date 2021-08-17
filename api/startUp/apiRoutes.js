@@ -1,7 +1,7 @@
 const express = require("express");
 // libs
 const morgan = require("morgan");
-const logger = require("../utils/logger");
+//const logger = require("../utils/logger");
 // middle
 const error = require("../middleware/error");
 // routes
@@ -11,7 +11,7 @@ const userRoutes = require("../routes/userRoutes");
 module.exports = function (app) {
   /// debug routing
   if (process.env.NODE_ENV === "development") {
-    logger.info("App is running on " + process.env.NODE_ENV + " mode.\n");
+    console.log("App is running on " + process.env.NODE_ENV + " mode.\n");
     app.use(morgan("tiny"));
   }
   // pipe

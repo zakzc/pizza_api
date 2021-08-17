@@ -10,7 +10,7 @@ const logger = require("../utils/logger");
 async function addNewMenuItem(req, res) {
   const validationError = validateMenu(req.body);
   if (validationError) return res.status(400).send(validationError);
-  logger.info("Adding Menu item");
+  console.log("Adding Menu item");
   const menuItemToAdd = _.pick(req.body, [
     "name",
     "price",
@@ -29,7 +29,7 @@ async function addNewMenuItem(req, res) {
     });
     // save
     await newMenuItem.save();
-    logger.info("Item saved");
+    console.log("Item saved");
     res.status(201).send(newMenuItem);
   } catch (err) {
     logger.error("Adding item failed. Error:\n", err);
@@ -43,7 +43,7 @@ async function getCompleteMenu(req, res, next) {
 }
 
 async function getMenuItem(req, res) {
-  logger.info("Get menu item");
+  console.log("Get menu item");
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(404).send("Invalid ID requested");
   }
@@ -57,7 +57,7 @@ async function getMenuItem(req, res) {
 async function updateMenu(req, res) {
   const validationError = validateMenu(req.body);
   if (validationError) return res.status(400).send(validationError);
-  logger.info("Updating Menu item");
+  console.log("Updating Menu item");
   let newMenuItem = await MenuList.findById(req.params.id);
   if (!newMenuItem) return res.status(400).send("Menu item does not exist");
   try {
@@ -68,7 +68,7 @@ async function updateMenu(req, res) {
       chef: req.body.chef,
     });
     itemToUpdate.save();
-    logger.info("Item saved");
+    console.log("Item saved");
     res.status(201).send(itemToUpdate);
   } catch (err) {
     logger.error("Adding item failed. Error:\n", err);
@@ -77,7 +77,7 @@ async function updateMenu(req, res) {
 }
 
 async function deleteMenuItem(req, res) {
-  logger.info("Delete item");
+  console.log("Delete item");
   await pizzaMenu.findByIdAndRemove(req.params.id);
   return res.status(401).send(pizzaMenu);
 }

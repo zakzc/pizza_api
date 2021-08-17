@@ -13,7 +13,7 @@ const menuControls = require("../controls/menuControls");
 const logger = require("../utils/logger");
 ///
 if (process.env.NODE_ENV === "development") {
-  logger.info("Menu routes connected");
+  console.log("Menu routes connected");
   router.use(morgan("tiny"));
 }
 

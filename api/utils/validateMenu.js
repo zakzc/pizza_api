@@ -3,7 +3,7 @@ Joi.objectId = require("joi-objectid")(Joi);
 const logger = require("./logger");
 
 function validateMenu(data) {
-  logger.info("Received request for validation");
+  console.log("Received request for validation");
   const schema = Joi.object({
     // id: Joi.objectId().required(),
     name: Joi.string().min(3).required(),
@@ -14,10 +14,10 @@ function validateMenu(data) {
   const isValid = schema.validate(data);
   if (isValid.error) {
     result = isValid.error.details[0].message;
-    logger.info("error on validation", result);
+    console.log("error on validation", result);
     return result;
   }
-  logger.info("valid");
+  console.log("valid");
   return false;
 }
 

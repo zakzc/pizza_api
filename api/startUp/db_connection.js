@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-const logger = require("../utils/logger");
+// const logger = require("../utils/logger");
 
 module.exports = function () {
   const mongooseURI =
@@ -18,10 +18,10 @@ module.exports = function () {
   mongoose
     .connect(mongooseURI, mongooseOptions)
     .then(() => {
-      logger.info("\nConnected to: " + mongooseURI + "\n");
+      console.info("\nConnected to: " + mongooseURI + "\n");
     })
     .catch((err) =>
-      logger.error(
+      console.error(
         "Error on connection to:/n",
         mongooseURI,
         "\n Error: \n",

@@ -18,7 +18,7 @@ async function registerUser(req, res) {
   const newUser = _.pick(req.body, ["name", "email", "password", "idAdmin"]);
   // check
   const doesUserExist = await UsersList.exists({ email: newUser.email });
-  logger.info(doesUserExist);
+  console.log(doesUserExist);
   if (doesUserExist)
     return res
       .status(400)

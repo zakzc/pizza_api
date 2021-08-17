@@ -4,7 +4,7 @@ Joi.objectId = require("joi-objectid")(Joi);
 const logger = require("./logger");
 
 function validateUser(data) {
-  logger.info("Request for validation");
+  console.log("Request for validation");
   const schema = Joi.object({
     // id: Joi.objectId().required(),
     name: Joi.string().min(3).max(100).required(),
@@ -17,7 +17,7 @@ function validateUser(data) {
     logger.error("error on validation", result);
     return result;
   }
-  logger.info("valid input");
+  console.log("valid input");
   return false;
 }
 
