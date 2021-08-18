@@ -1,13 +1,12 @@
 import * as express from "express";
+import * as setRoutes from "./api/startUp/apiRoutes";
+import makeConnection  from "./api/startUp/db_connection";
+import config from "./api/startUp/config";
+import prod from "./api/startUp/prod";
+
 // init
 const app = express();
 require("dotenv").config();
-
-
-import * as setRoutes from "./api/startUp/apiRoutes";
-import * as makeConnection  from "./api/startUp/db_connection";
-import * as config from "./api/startUp/config";
-import * as prod from "./api/startUp/prod";
 
 // variables:
 if (process.env.NODE_ENV !== "production") {
@@ -19,7 +18,7 @@ makeConnection();
 config();
 prod(app);
 
-let port: number;
+let port: number | string ;
 
 if (process.env.NODE_ENV === "test") {
   port = process.env.TEST_PORT || 5000;

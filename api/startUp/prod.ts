@@ -1,7 +1,8 @@
-const helmet = require("helmet");
+// import helmet = require("helmet");
 // const compression = require("compression")
+import * as  helmet from "helmet";
 
-module.exports = function (app) {
+export default function prod(app: any): void {
   app.use(helmet());
   //   app.use(compression());
 };
