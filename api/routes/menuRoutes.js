@@ -10,7 +10,7 @@ const auth = require("../middleware/auth");
 /// control
 const menuControls = require("../controls/menuControls");
 // Logs
-const logger = require("../utils/logger");
+//const logger = require("../utils/logger");
 ///
 if (process.env.NODE_ENV === "development") {
   console.log("Menu routes connected");

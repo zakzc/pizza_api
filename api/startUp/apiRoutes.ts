@@ -1,14 +1,15 @@
-const express = require("express");
+import * as express from "express";
 // libs
-const morgan = require("morgan");
+import * as morgan from "morgan";
+//import logger from "../utils/logger";
 //const logger = require("../utils/logger");
 // middle
-const error = require("../middleware/error");
+import errorMessage from "../middleware/error";
 // routes
-const menuRoutes = require("../routes/menuRoutes");
-const userRoutes = require("../routes/userRoutes");
+import * as menuRoutes from "../routes/menuRoutes";
+import * as  userRoutes from "../routes/userRoutes";
 
-module.exports = function (app) {
+export default function setRoutes(app: any): void {
   /// debug routing
   if (process.env.NODE_ENV === "development") {
     console.log("App is running on " + process.env.NODE_ENV + " mode.\n");
@@ -18,8 +19,8 @@ module.exports = function (app) {
   app.use(express.json());
   app.use("/menu_api", menuRoutes);
   app.use("/user_api", userRoutes);
-  app.use((req, res) => {
+  app.use((req: any, res: any) => {
     res.status(404).send("Route not found");
   });
-  app.use(error);
+  app.use(errorMessage);
 };

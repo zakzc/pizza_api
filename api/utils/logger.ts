@@ -1,12 +1,12 @@
-const { createLogger, format, transports } = require("winston");
+import {createLogger, format, transports} from "winston";
 const { combine, colorize, timestamp, prettyPrint, printf } = format;
 
 const myFormat = printf(({ level, message, timestamp }) => {
   return `${timestamp}: ${level}\n  => ${message}`;
 });
 
-let logTransport;
-let logLevel;
+let logTransport: any;
+let logLevel: string;
 if (process.env.NODE_ENV === "development") {
   logTransport = [new transports.Console()];
   logLevel = "info";
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "development") {
   logLevel = "error";
 }
 
-const logger = createLogger({
+const logger: any = createLogger({
   level: logLevel,
   format: combine(
     format.colorize(),
@@ -26,4 +26,4 @@ const logger = createLogger({
   transports: logTransport,
 });
 
-module.exports = logger;
+export default logger;

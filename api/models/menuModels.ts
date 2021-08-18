@@ -1,6 +1,8 @@
-const mongoose = require("mongoose");
+import * as mongoose from "mongoose"
 
-const MenuSchema = new mongoose.Schema({
+const Schema = mongoose.Schema
+
+const menuSchema: any = new Schema({
   name: {
     type: String,
     required: true,
@@ -19,4 +21,4 @@ const MenuSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("MenuList", MenuSchema);
+export const MenuList = new mongoose.Schema(menuSchema)
