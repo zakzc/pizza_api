@@ -1,29 +1,51 @@
-import {createLogger, format, transports} from "winston";
-const { combine, colorize, timestamp, prettyPrint, printf } = format;
+import * as winston from 'winston'
 
-const myFormat = printf(({ level, message, timestamp }) => {
-  return `${timestamp}: ${level}\n  => ${message}`;
-});
-
-let logTransport: any;
-let logLevel: string;
-if (process.env.NODE_ENV === "development") {
-  logTransport = [new transports.Console()];
-  logLevel = "info";
-} else {
-  logTransport = [new transports.File({ filename: "logFile.log" })];
-  logLevel = "error";
+const levels = {
+  error: 0,
+  warn: 1,
+  info: 2,
+  http: 3,
+  debug: 4,
 }
 
-const logger: any = createLogger({
-  level: logLevel,
-  format: combine(
-    format.colorize(),
-    timestamp({ format: "HH:mm:ss" }),
-    myFormat,
-    format.errors({ stack: true })
-  ),
-  transports: logTransport,
-});
+const level = () => {
+  const env = process.env.NODE_ENV || 'development'
+  const isDevelopment = env === 'development'
+  return isDevelopment ? 'debug' : 'warn'
+}
 
-export default logger;
+const colors = {
+  error: 'red',
+  warn: 'yellow',
+  info: 'green',
+  http: 'magenta',
+  debug: 'white',
+}
+
+winston.addColors(colors)
+
+const format = winston.format.combine(
+  winston.format.timestamp({ format: 'HH:mm:ss' }),
+  winston.format.colorize({ all: true }),
+  winston.format.printf(
+    (info) => `${info.timestamp}\n ${info.message}`,
+  ),
+)
+
+const transports = [
+  new winston.transports.Console(),
+  new winston.transports.File({
+    filename: 'logs/error.log',
+    level: 'error',
+  }),
+  new winston.transports.File({ filename: 'logs/all.log' }),
+]
+
+const Logger = winston.createLogger({
+  level: level(),
+  levels,
+  format,
+  transports,
+})
+
+export default Logger

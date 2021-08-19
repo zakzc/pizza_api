@@ -1,4 +1,7 @@
 import * as mongoose from "mongoose";
+// utils
+import Logger from "../utils/logger";
+
 /// variables
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -19,10 +22,10 @@ export default function makeConnection():void {
    mongoose
     .connect(mongooseURI, mongooseOptions)
     .then(() => {
-      console.info("\nMongoose connected to: " + mongooseURI + "\n");
+      Logger.info("\nMongoose connected to: " + mongooseURI + "\n");
     })
     .catch((err) =>
-      console.error(
+      Logger.error(
         "Error on connection to:/n",
         mongooseURI,
         "\n Error: \n",

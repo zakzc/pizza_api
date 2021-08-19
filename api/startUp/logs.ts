@@ -1,12 +1,12 @@
-import * as logger from "../utils/logger";
+import Logger from "../utils/logger";
 
-module.exports = function () {
+export default function (): void {
   process.on("uncaughtException", (except: any) => {
-    logger.error(except.message, except);
+    Logger.error(except.message, except);
     process.exit(1);
   });
   process.on("unhandledRejection", (except) => {
-    logger.error(except);
+    Logger.error(except);
     process.exit(1);
   });
 };

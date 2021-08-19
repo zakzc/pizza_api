@@ -1,5 +1,5 @@
 require("dotenv").config();
-import jwt from "jsonwebtoken"
+import * as  jwt from "jsonwebtoken"
 
 
 export default function token(payload: string): string {
