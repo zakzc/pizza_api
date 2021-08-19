@@ -1,13 +1,13 @@
-import * as express from "express";
+import * as express from "express"
 // libs
-import * as morgan from "morgan";
+import * as morgan from "morgan"
 // utils
-import Logger from "../utils/logger";
+import Logger from "../utils/logger"
 // middle
-import errorMessage from "../middleware/error";
+import errorMessage from "../middleware/error"
 // routes
-import menuRouter from "../routes/menuRouter";
-import userRouter from "../routes/userRouter";
+import menuRouter from "../routes/menuRouter"
+import userRouter from "../routes/userRouter"
 
 export default function setRoutes(app: any): void {
   /// debug routing

@@ -7,7 +7,8 @@ import  auth from "../middleware/auth"
 import asyncMiddleware from "../middleware/async";
 // const validObjectId = require("../middleware/validObjectId");
 /// control
-const menuControls = require("../controls/menuControls");
+import * as menuControls from "../controls/menuControls"
+//const menuControls = require("../controls/menuControls");
 // Util
 import Logger from "../utils/logger";
 

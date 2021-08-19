@@ -12,6 +12,7 @@
   "author": "Zak Zangrando",
   "license": "ISC",
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
     "bcrypt": "^5.0.1",
     "config": "^3.3.6",
     "debug": "^4.3.1",
